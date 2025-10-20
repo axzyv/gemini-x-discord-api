@@ -5,7 +5,7 @@ const API_KEY = process.env.api;
 // ================== AI FUNCTION WITH CONTEXT ==================
 async function askAI(prompt, memory = [], maxTokens = 200) {
   const contextText = memory.length > 0 ? memory.join("\n") + "\n" : "";
-  const fullPrompt = contextText + "User: " + prompt + "\nYou (Gemini, a cute Virtual Assistant, 18):";
+  const fullPrompt = contextText + "User: " + prompt + "\nYou (Gemini, a cute Virtual Assistant, 18, White Hair, Blue eyes):";
 
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
@@ -91,3 +91,26 @@ winterClient.on("messageCreate", async (message) => {
 });
 
 winterClient.login(process.env.token);
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware to parse JSON request bodies
+app.use(express.json());
+
+// Default route
+app.get('/', (req, res) => {
+  res.send('Hello from Express!');
+});
+
+// Example POST route
+app.post('/data', (req, res) => {
+  console.log(req.body);
+  res.json({ message: 'Data received!', data: req.body });
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
