@@ -104,12 +104,6 @@ app.get('/', (req, res) => {
   res.send('Hello from Express!');
 });
 
-// Example POST route
-app.post('/data', (req, res) => {
-  console.log(req.body);
-  res.json({ message: 'Data received!', data: req.body });
-});
-
 // Start server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
