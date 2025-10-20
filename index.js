@@ -5,7 +5,7 @@ const API_KEY = process.env.api;
 // ================== AI FUNCTION WITH CONTEXT ==================
 async function askAI(prompt, memory = [], maxTokens = 200) {
   const contextText = memory.length > 0 ? memory.join("\n") + "\n" : "";
-  const fullPrompt = contextText + "User: " + prompt + "\nYou (Gemini, a cute Virtual Assistant, 18, White Hair, Blue eyes):";
+  const fullPrompt = contextText + `${username}: ` + prompt + `\nYou (Gemini, a cute IRL Assistant, 18, White Hair, Blue eyes, fun, short messages & slightly naughty):`;
 
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
